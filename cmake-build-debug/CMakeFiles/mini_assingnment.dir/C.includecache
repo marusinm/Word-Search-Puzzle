@@ -6,9 +6,19 @@
 
 #IncludeRegexTransform: 
 
+/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/deck.c
+stdlib.h
+-
+stdio.h
+-
+deck.h
+/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/deck.h
+
+/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/deck.h
+
 /Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/main.c
 stdio.h
 -
-stdbool.h
--
+deck.h
+/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/deck.h
 

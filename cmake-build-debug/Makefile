@@ -123,6 +123,33 @@ mini_assingnment/fast:
 	$(MAKE) -f CMakeFiles/mini_assingnment.dir/build.make CMakeFiles/mini_assingnment.dir/build
 .PHONY : mini_assingnment/fast
 
+deck.o: deck.c.o
+
+.PHONY : deck.o
+
+# target to build an object file
+deck.c.o:
+	$(MAKE) -f CMakeFiles/mini_assingnment.dir/build.make CMakeFiles/mini_assingnment.dir/deck.c.o
+.PHONY : deck.c.o
+
+deck.i: deck.c.i
+
+.PHONY : deck.i
+
+# target to preprocess a source file
+deck.c.i:
+	$(MAKE) -f CMakeFiles/mini_assingnment.dir/build.make CMakeFiles/mini_assingnment.dir/deck.c.i
+.PHONY : deck.c.i
+
+deck.s: deck.c.s
+
+.PHONY : deck.s
+
+# target to generate assembly for a file
+deck.c.s:
+	$(MAKE) -f CMakeFiles/mini_assingnment.dir/build.make CMakeFiles/mini_assingnment.dir/deck.c.s
+.PHONY : deck.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -159,6 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... mini_assingnment"
+	@echo "... deck.o"
+	@echo "... deck.i"
+	@echo "... deck.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

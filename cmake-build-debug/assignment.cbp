@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/deck.c">
+			<Option target="mini_assingnment"/>
+		</Unit>
+		<Unit filename="/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/deck.h">
+			<Option target="mini_assingnment"/>
+		</Unit>
 		<Unit filename="/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/main.c">
 			<Option target="mini_assingnment"/>
 		</Unit>

@@ -1,12 +1,10 @@
 #include <stdio.h>
-#include <stdbool.h>
-#include <stdlib.h>
+#include "deck.h"
 
 #define NEW_GAME 1
 #define EXIT 2
 
 int generate_menu(){
-    bool is_exit = false;
     fprintf(stdout, "1.\tGenerate a new Word Puzzle\n");
     fprintf(stdout, "2.\tExit\n");
 
@@ -23,8 +21,12 @@ int generate_menu(){
 
 int main()
 {
-    generate_menu();
-
+    int menu_result = generate_menu();
+    if (menu_result == NEW_GAME){
+        //generate new game
+        fill_grid_randomly();
+        print_deck();
+    }
 
     fprintf(stdout, "Finished\n");
     return 0;
