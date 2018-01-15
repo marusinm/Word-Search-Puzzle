@@ -4,6 +4,7 @@
 #define NEW_GAME 1
 #define EXIT 2
 
+//generates menu
 int generate_menu(){
     fprintf(stdout, "1.\tGenerate a new Word Puzzle\n");
     fprintf(stdout, "2.\tExit\n");
@@ -17,9 +18,12 @@ int generate_menu(){
     }else if(option == 2){ //exit loop, allow program to return 0 and finish
         return  EXIT;
     }
+
+    //TODO osetrit co spravit ked user stlaci nieco ine
+
 }
 
-int main()
+int main(int argc, char** argv)
 {
     int menu_result = generate_menu();
     if (menu_result == NEW_GAME){

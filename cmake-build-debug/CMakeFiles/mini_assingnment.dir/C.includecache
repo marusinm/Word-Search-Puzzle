@@ -11,6 +11,10 @@ stdlib.h
 -
 stdio.h
 -
+time.h
+-
+string.h
+-
 deck.h
 /Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/deck.h
 
