@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include <string.h>
 #include "deck.h"
 #include "wordgenerator.h"
 
@@ -39,8 +38,6 @@ void print_deck(){
     for (int i = 0; i < HIDDEN_WORDS ; ++i) {
         fprintf(stdout, "%s  ", hidden_words[i]);
     }
-
-
-    //TODO: print also hidden words
+    fprintf(stdout, "\n");
 }
 
