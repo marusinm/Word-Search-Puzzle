@@ -50,12 +50,12 @@ int gen_word_direction(){
 //generate and save to hidden words
 char * generate_hidden_word(){
     char * word;
-    int position = generate_rand_num(0, 20);
+    int position = generate_rand_num(0, WORD_DB_LENGTH-1);
 
-    //check if word was already generated
+    //check if word has been already generated
     bool is_generated = false;
     for (int i = 0; i < HIDDEN_WORDS; ++i) {
-        if (strcmp(hidden_words[i]->word, words_database[position]) == 0){
+        if (strcmp(hidden_words[i].word, words_database[position]) == 0){
             is_generated = true;
             break;
         }
@@ -63,7 +63,7 @@ char * generate_hidden_word(){
 
     if (is_generated){ // if word already exists try to generate again
         word = generate_hidden_word();
-    }else { // if word don't exists put it to hidden words
+    }else { // if word doesn't exist put it to hidden words
         word = words_database[position];
     }
 
@@ -177,10 +177,10 @@ void set_word_to_deck(char * word, int direction, int x_pos, int y_pos){
 void set_words(){
     srand(time(NULL));
     for (int i = 0; i < HIDDEN_WORDS; ++i) {
-        strcpy(hidden_words[i]->word, generate_hidden_word());
+        strcpy(hidden_words[i].word, generate_hidden_word());
         int direction = gen_word_direction();
-        hidden_words[i]->direction = direction;
-        hidden_words[i]->length = (int)strlen(hidden_words[i]->word);
+        hidden_words[i].direction = direction;
+        hidden_words[i].length = (int)strlen(hidden_words[i].word);
 
 
         //generate random position
@@ -188,11 +188,11 @@ void set_words(){
         int y_pos = generate_rand_num(0, DECK_HEIGHT-1);
 
         //check if position and rest of table is enough for word length
-        if (is_fitting((int)strlen(hidden_words[i]->word), direction, x_pos, y_pos)){ //word fits to the grid from starting position
+        if (is_fitting((int)strlen(hidden_words[i].word), direction, x_pos, y_pos)){ //word fits to the grid from starting position
 
-            if (can_set(hidden_words[i]->word, direction, x_pos, y_pos)){ // word isn't intersecting with other word, or intersect in same letter
+            if (can_set(hidden_words[i].word, direction, x_pos, y_pos)){ // word isn't intersecting with other word, or intersect in same letter
                 //finally set word
-                set_word_to_deck(hidden_words[i]->word, direction, x_pos, y_pos);
+                set_word_to_deck(hidden_words[i].word, direction, x_pos, y_pos);
 
             }else{//repeat iteration - generate new word, direction and position
                 i--;
@@ -205,12 +205,12 @@ void set_words(){
         }
 
 #ifdef _HINT
-        if (hidden_words[i]->direction == VERTICAL)
-            printf("%d %d %s vertical with length %d\n", x_pos, y_pos, hidden_words[i]->word, hidden_words[i]->length);
-        else if (hidden_words[i]->direction == HORIZONTAL)
-            printf("%d %d %s horizontal with length %d\n", x_pos, y_pos, hidden_words[i]->word, hidden_words[i]->length);
+        if (hidden_words[i].direction == VERTICAL)
+            printf("%d %d %s vertical with length %d\n", x_pos, y_pos, hidden_words[i].word, hidden_words[i].length);
+        else if (hidden_words[i].direction == HORIZONTAL)
+            printf("%d %d %s horizontal with length %d\n", x_pos, y_pos, hidden_words[i].word, hidden_words[i].length);
         else
-            printf("%d %d %s diagonal with length %d\n", x_pos, y_pos, hidden_words[i]->word, hidden_words[i]->length);
+            printf("%d %d %s diagonal with length %d\n", x_pos, y_pos, hidden_words[i].word, hidden_words[i].length);
 #endif
 
     }

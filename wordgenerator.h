@@ -26,7 +26,8 @@ typedef struct hidden_word{
 
 }hidden_word;
 
-hidden_word hidden_words[HIDDEN_WORDS][WORD_LENGTH]; //array of hidden words
+hidden_word hidden_words[HIDDEN_WORDS]; //array of hidden words
+
 
 void init_bool_grids();
 int gen_word_direction();
