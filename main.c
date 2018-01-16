@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "deck.h"
 #include "wordgenerator.h"
 
@@ -31,13 +32,12 @@ void init_game(){
     set_words();            //generate new hidden words and put it to the deck
 }
 
-
 int main(int argc, char** argv)
 {
     int menu_result = generate_menu();
     if (menu_result == NEW_GAME){
-        init_game(); //generate new game
-        print_deck();//print game
+        init_game();    //generate new game
+        print_deck();   //print game
     }
 
     fprintf(stdout, "Finished\n");

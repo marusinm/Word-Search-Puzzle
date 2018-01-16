@@ -14,18 +14,24 @@
 #define WORD_DB_LENGTH 20
 #define HIDDEN_WORDS 4
 
+#define _HINT //TODO: comment to disable hint
+
 //grid of booleans, true if word exist on some position
-bool words_positions[DECK_WIDTH][DECK_HEIGHT];
+bool words_positions[DECK_HEIGHT][DECK_WIDTH];
 
 //grid of booleans, true if we already tried to put word on position unsuccessfully
-bool tried_positions[DECK_WIDTH][DECK_HEIGHT];
+bool tried_positions[DECK_HEIGHT][DECK_WIDTH];
 
 //array of hidden words
 char hidden_words[HIDDEN_WORDS][WORD_LENGTH];
 
 void init_bool_grids();
+void reset_attempts();
 int gen_word_direction();
 char * generate_hidden_word();
+bool is_fitting(int word_length, int direction, int x_pos, int y_pos);
+bool can_set(char * word, int direction, int x_pos, int y_pos);
+void set_word_to_deck(char * word, int direction, int x_pos, int y_pos);
 void set_words();
 
 #endif //ASSIGNMENT_WORDGENERATOR_H

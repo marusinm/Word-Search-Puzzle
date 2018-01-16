@@ -8,7 +8,8 @@
 #define ASCII_FIRST_CAPITAL 65
 #define ASCII_LAST_CAPITAL 90
 
-char deck[DECK_WIDTH][DECK_HEIGHT];
+char deck[DECK_HEIGHT][DECK_WIDTH];
+bool is_hint;
 
 char generate_rand_num(int minimum, int maximum);
 void fill_grid_randomly();

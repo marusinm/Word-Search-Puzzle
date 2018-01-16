@@ -13,8 +13,8 @@ char generate_rand_num(int minimum, int maximum){
 //fill grid with random chars
 void fill_grid_randomly(){
     srand(time(NULL));
-    for (int i = 0; i < DECK_WIDTH; ++i) {
-        for (int j = 0; j < DECK_HEIGHT; ++j) {
+    for (int i = 0; i < DECK_HEIGHT; ++i) {
+        for (int j = 0; j < DECK_WIDTH; ++j) {
             deck[i][j] = generate_rand_num(ASCII_FIRST_CAPITAL, ASCII_LAST_CAPITAL);
         }
     }
@@ -24,11 +24,11 @@ void fill_grid_randomly(){
 void print_deck(){
     //print labeling
     fprintf(stdout, "  ABCDEFGHIJ\n\n");
-    for (int i = 0; i < DECK_WIDTH; ++i) {
+    for (int i = 0; i < DECK_HEIGHT; ++i) {
         //print labeling
         fprintf(stdout, "%d ",i);
 
-        for (int j = 0; j < DECK_HEIGHT; ++j) {
+        for (int j = 0; j < DECK_WIDTH; ++j) {
             fprintf(stdout, "%c", deck[i][j]);
         }
         fprintf(stdout, "\n");
@@ -43,3 +43,4 @@ void print_deck(){
 
     //TODO: print also hidden words
 }
+

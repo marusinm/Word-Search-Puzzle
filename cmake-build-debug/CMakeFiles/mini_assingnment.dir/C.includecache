@@ -27,6 +27,8 @@ stdbool.h
 /Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/main.c
 stdio.h
 -
+string.h
+-
 deck.h
 /Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/deck.h
 wordgenerator.h
