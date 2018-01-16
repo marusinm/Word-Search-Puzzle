@@ -35,16 +35,6 @@ void init_bool_grids(){
     for (int i = 0; i < DECK_HEIGHT; ++i) {
         for (int j = 0; j < DECK_WIDTH; ++j) {
             words_positions[i][j] = false;
-            tried_positions[i][j] = false;
-        }
-    }
-}
-
-//reset attempts for trying to set word starting postion
-void reset_attempts(){
-    for (int i = 0; i < DECK_HEIGHT; ++i) {
-        for (int j = 0; j < DECK_WIDTH; ++j) {
-            tried_positions[i][j] = false;
         }
     }
 }
@@ -53,7 +43,6 @@ void reset_attempts(){
 //generate next hidden word direction
 int gen_word_direction(){
     int directions[3] = {HORIZONTAL, VERTICAL, DIAGONAL};
-//    int directions[3] = {HORIZONTAL, HORIZONTAL, HORIZONTAL};
     int position = (generate_rand_num(0, 2));
     return directions[position];
 }
@@ -190,6 +179,8 @@ void set_words(){
     for (int i = 0; i < HIDDEN_WORDS; ++i) {
         strcpy(hidden_words[i], generate_hidden_word());
         int direction = gen_word_direction();
+        hidden_words_directions[i] = direction;
+
 
         //generate random position
         int x_pos = generate_rand_num(0, DECK_WIDTH-1);
@@ -213,7 +204,12 @@ void set_words(){
         }
 
 #ifdef _HINT
-            printf("%d %d %s\n", x_pos, y_pos, hidden_words[i]);
+        if (hidden_words_directions[i] == VERTICAL)
+            printf("%d %d %s vertical\n", x_pos, y_pos, hidden_words[i]);
+        else if (hidden_words_directions[i] == HORIZONTAL)
+            printf("%d %d %s horizontal\n", x_pos, y_pos, hidden_words[i]);
+        else
+            printf("%d %d %s diagonal\n", x_pos, y_pos, hidden_words[i]);
 #endif
 
     }

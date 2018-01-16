@@ -19,14 +19,10 @@
 //grid of booleans, true if word exist on some position
 bool words_positions[DECK_HEIGHT][DECK_WIDTH];
 
-//grid of booleans, true if we already tried to put word on position unsuccessfully
-bool tried_positions[DECK_HEIGHT][DECK_WIDTH];
-
-//array of hidden words
-char hidden_words[HIDDEN_WORDS][WORD_LENGTH];
+char hidden_words[HIDDEN_WORDS][WORD_LENGTH]; //array of hidden words
+int hidden_words_directions[HIDDEN_WORDS];    //directions of hidden word in added order
 
 void init_bool_grids();
-void reset_attempts();
 int gen_word_direction();
 char * generate_hidden_word();
 bool is_fitting(int word_length, int direction, int x_pos, int y_pos);
