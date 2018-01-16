@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "deck.h"
+#include "wordgenerator.h"
 
 #define NEW_GAME 1
 #define EXIT 2
@@ -23,13 +24,20 @@ int generate_menu(){
 
 }
 
+//proceed all necessary steps for initialization
+void init_game(){
+    fill_grid_randomly();   //fill grid with randomly letters
+    init_bool_grids();      //initialize bool grid which indicate filled words positions
+    set_words();            //generate new hidden words and put it to the deck
+}
+
+
 int main(int argc, char** argv)
 {
     int menu_result = generate_menu();
     if (menu_result == NEW_GAME){
-        //generate new game
-        fill_grid_randomly();
-        print_deck();
+        init_game(); //generate new game
+        print_deck();//print game
     }
 
     fprintf(stdout, "Finished\n");

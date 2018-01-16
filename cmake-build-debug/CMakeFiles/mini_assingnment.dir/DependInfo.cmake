@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/deck.c" "/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/cmake-build-debug/CMakeFiles/mini_assingnment.dir/deck.c.o"
   "/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/main.c" "/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/cmake-build-debug/CMakeFiles/mini_assingnment.dir/main.c.o"
+  "/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/wordgenerator.c" "/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/cmake-build-debug/CMakeFiles/mini_assingnment.dir/wordgenerator.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

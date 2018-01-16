@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/mini_assingnment.dir/main.c.o"
   "CMakeFiles/mini_assingnment.dir/deck.c.o"
+  "CMakeFiles/mini_assingnment.dir/wordgenerator.c.o"
   "mini_assingnment.pdb"
   "mini_assingnment"
 )

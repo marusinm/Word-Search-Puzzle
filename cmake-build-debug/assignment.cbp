@@ -89,6 +89,12 @@
 		<Unit filename="/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/main.c">
 			<Option target="mini_assingnment"/>
 		</Unit>
+		<Unit filename="/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/wordgenerator.c">
+			<Option target="mini_assingnment"/>
+		</Unit>
+		<Unit filename="/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/wordgenerator.h">
+			<Option target="mini_assingnment"/>
+		</Unit>
 		<Unit filename="/Users/Marek/Documents/VUT/Erasmus/C_lang/assignment/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

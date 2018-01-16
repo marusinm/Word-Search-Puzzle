@@ -177,6 +177,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/mini_assingnment.dir/build.make CMakeFiles/mini_assingnment.dir/main.c.s
 .PHONY : main.c.s
 
+wordgenerator.o: wordgenerator.c.o
+
+.PHONY : wordgenerator.o
+
+# target to build an object file
+wordgenerator.c.o:
+	$(MAKE) -f CMakeFiles/mini_assingnment.dir/build.make CMakeFiles/mini_assingnment.dir/wordgenerator.c.o
+.PHONY : wordgenerator.c.o
+
+wordgenerator.i: wordgenerator.c.i
+
+.PHONY : wordgenerator.i
+
+# target to preprocess a source file
+wordgenerator.c.i:
+	$(MAKE) -f CMakeFiles/mini_assingnment.dir/build.make CMakeFiles/mini_assingnment.dir/wordgenerator.c.i
+.PHONY : wordgenerator.c.i
+
+wordgenerator.s: wordgenerator.c.s
+
+.PHONY : wordgenerator.s
+
+# target to generate assembly for a file
+wordgenerator.c.s:
+	$(MAKE) -f CMakeFiles/mini_assingnment.dir/build.make CMakeFiles/mini_assingnment.dir/wordgenerator.c.s
+.PHONY : wordgenerator.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +219,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... wordgenerator.o"
+	@echo "... wordgenerator.i"
+	@echo "... wordgenerator.s"
 .PHONY : help
 
 
