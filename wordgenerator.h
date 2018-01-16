@@ -19,8 +19,14 @@
 //grid of booleans, true if word exist on some position
 bool words_positions[DECK_HEIGHT][DECK_WIDTH];
 
-char hidden_words[HIDDEN_WORDS][WORD_LENGTH]; //array of hidden words
-int hidden_words_directions[HIDDEN_WORDS];    //directions of hidden word in added order
+typedef struct hidden_word{
+    char word[WORD_LENGTH];
+    int length;
+    int direction;
+
+}hidden_word;
+
+hidden_word hidden_words[HIDDEN_WORDS][WORD_LENGTH]; //array of hidden words
 
 void init_bool_grids();
 int gen_word_direction();

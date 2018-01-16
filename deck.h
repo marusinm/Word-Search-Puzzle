@@ -13,5 +13,6 @@ char deck[DECK_HEIGHT][DECK_WIDTH];
 char generate_rand_num(int minimum, int maximum);
 void fill_grid_randomly();
 void print_deck();
+void guess_loop();
 
 #endif //ASSIGNMENT_DECK_H

@@ -36,8 +36,13 @@ void print_deck(){
     //print hidden words
     fprintf(stdout, "\nHidden words:\n");
     for (int i = 0; i < HIDDEN_WORDS ; ++i) {
-        fprintf(stdout, "%s  ", hidden_words[i]);
+        fprintf(stdout, "%s  ", hidden_words[i]->word);
     }
     fprintf(stdout, "\n");
+}
+
+//listening for user input and checking words or end of program
+void guess_loop(){
+    //TODO
 }
 
