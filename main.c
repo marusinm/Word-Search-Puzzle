@@ -38,6 +38,7 @@ int main(int argc, char** argv)
     if (menu_result == NEW_GAME){
         init_game();    //generate new game
         print_deck();   //print game
+        guess_loop();   //evaluating user output
     }
 
     fprintf(stdout, "Finished\n");
