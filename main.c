@@ -28,7 +28,7 @@ int generate_menu(){
 //proceed all necessary steps for initialization
 void init_game(){
     fill_grid_randomly();   //fill grid with randomly letters
-    init_bool_grids();      //initialize bool grid which indicate filled words positions
+    init_positions_grid();      //initialize bool grid which indicate filled words positions
     set_words();            //generate new hidden words and put it to the deck
 }
 
