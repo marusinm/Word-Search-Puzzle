@@ -29,8 +29,8 @@ char words_database[WORD_DB_LENGTH][WORD_LENGTH]  = {
         "CLUB"
 };
 
+//print positions of hidden words
 void print_positions_grid(){
-    printf("deck width %d, height %d\n", DECK_WIDTH, DECK_HEIGHT);
     for (int i = 0; i < DECK_HEIGHT; ++i) {
         for (int j = 0; j < DECK_WIDTH; ++j) {
             printf("%d",words_positions[i][j]);
@@ -47,7 +47,6 @@ void init_positions_grid(){
             words_positions[i][j] = 0;
         }
     }
-    print_positions_grid();
 }
 
 
@@ -199,6 +198,7 @@ void set_words(){
         int direction = gen_word_direction();
         hidden_words[i].direction = direction;
         hidden_words[i].length = (int)strlen(hidden_words[i].word);
+        hidden_words[i].word_index = i+1;
 
 
         //generate random position
@@ -224,17 +224,50 @@ void set_words(){
         }
 
 #ifdef _HINT
+        char ch_y_pos = (char)(y_pos+ASCII_FIRST_CAPITAL);
         if (hidden_words[i].direction == VERTICAL)
-            printf("%d %d %s vertical with length %d, word index %d\n", x_pos, y_pos, hidden_words[i].word, hidden_words[i].length, i+1);
+            printf("%d %c %s vertical with length %d, word index %d\n", x_pos, ch_y_pos, hidden_words[i].word, hidden_words[i].length, i+1);
         else if (hidden_words[i].direction == HORIZONTAL)
-            printf("%d %d %s horizontal with length %d, word index %d\n", x_pos, y_pos, hidden_words[i].word, hidden_words[i].length, i+1);
+            printf("%d %c %s horizontal with length %d, word index %d\n", x_pos, ch_y_pos, hidden_words[i].word, hidden_words[i].length, i+1);
         else
-            printf("%d %d %s diagonal with length %d, word index %d\n", x_pos, y_pos, hidden_words[i].word, hidden_words[i].length, i+1);
+            printf("%d %c %s diagonal with length %d, word index %d\n", x_pos, ch_y_pos, hidden_words[i].word, hidden_words[i].length, i+1);
 #endif
 
     }
+}
 
-    print_positions_grid();
+
+//check if word exist on concrete position, return index of the word
+int check_word_by_pos(int x1, int y1, int x2, int y2){
+    int word_idx1 = words_positions[x1][y1];
+    int word_idx2 = words_positions[x2][y2];
+
+    if (word_idx1 == word_idx2){ //it is the same word on both positions
+
+        //find the word by index
+        hidden_word word;
+        for (int i = 0; i < HIDDEN_WORDS; ++i) {
+            if (hidden_words[i].word_index == word_idx1){
+                word = hidden_words[i];
+                break;
+            }
+        }
+
+        char first_word_letter = word.word[0];
+        char last_word_letter = word.word[(int)strlen(word.word)-1];
+
+        char first_choosen_letter = deck[x1][y1];
+        char last_choosen_letter = deck[x2][y2];
+
+
+        //check if user selected right first and last letters, then assume that he found the word (could be exceptions)
+        if (first_word_letter == first_choosen_letter && last_word_letter == last_choosen_letter){
+            return word.word_index;
+        }
+
+    }else{
+        return 0;
+    }
 }
 
 

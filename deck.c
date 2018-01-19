@@ -46,10 +46,24 @@ void print_deck(){
 int guess_loop() {
     int exit_code;
 
-    bool is_guessed = false;
+    bool is_first_pos = true;
+    int row1;
+    int column1;
+    int row2;
+    int column2;
+
+    bool is_solved = false; //dedicate if game is solved
+    bool is_guessed = false; //dedicate if some of hidden words was founded is solved
     bool incoret_format = false;
-    while (is_guessed == false){
-        fprintf(stdout, "Type position!\n");
+    while (is_solved == false){
+
+        //user must guess position of first letter and then position of last letter
+        if (is_first_pos) {
+            fprintf(stdout, "Type 1st position!\n");
+        }else{
+            fprintf(stdout, "Type 2nd position!\n");
+        }
+
         char input[7];
         fgets(input, 7, stdin);
 
@@ -61,13 +75,9 @@ int guess_loop() {
             exit_code = GAME_EXITED;
             break;
 
-        }else if(strlen(input) == 3){
+        }else if(strlen(input) == 3){ //user added two chars + \n
             char row = input[0];
             char column = input[1];
-
-            printf("row %d\n", row-ASCII_ZERO);
-            printf("column %d\n", column-ASCII_FIRST_CAPITAL);
-
 
             //check if chars are in correct range
             if (row - ASCII_ZERO >= 0
@@ -75,7 +85,33 @@ int guess_loop() {
                 && column - ASCII_FIRST_CAPITAL >= 0
                 && column - ASCII_FIRST_CAPITAL < DECK_WIDTH){
 
-                //TODO evaluate word
+                if (is_first_pos){
+                    row1 = row - ASCII_ZERO;
+                    column1 = column - ASCII_FIRST_CAPITAL;
+                }else{
+                    row2 = row - ASCII_ZERO;
+                    column2 = column - ASCII_FIRST_CAPITAL;
+                }
+
+                if (is_first_pos == false){ // user input both positions we can evaluate
+
+                    int word_index = check_word_by_pos(row1, column1, row2, column2);
+
+                    //find the word by index
+                    hidden_word word;
+                    for (int i = 0; i < HIDDEN_WORDS; ++i) {
+                        if (hidden_words[i].word_index == word_index){
+                            word = hidden_words[i];
+                            break;
+                        }
+                    }
+                    if (word_index == 0){
+                        fprintf(stdout, "You made a mistake!\n");
+                    }else{
+                        fprintf(stdout, "You found %s!\n",word.word);
+                    }
+                }
+
 
             }else{
                 incoret_format = true;
@@ -89,7 +125,13 @@ int guess_loop() {
             fprintf(stdout, "Incorrect format!\n");
             incoret_format = false;
         }
-        fprintf(stdout, "Try again!\n\n");
+
+        //user must guess position of first letter and then position of last letter
+        if (is_first_pos) {
+            is_first_pos = false;
+        }else{
+            is_first_pos = true;
+        }
     }
 
     return exit_code;

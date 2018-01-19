@@ -26,6 +26,7 @@ typedef struct hidden_word{
     char word[WORD_LENGTH];
     int length;
     int direction;
+    int word_index;
 
 }hidden_word;
 
@@ -40,5 +41,7 @@ bool can_set(char * word, int direction, int x_pos, int y_pos);
 //void set_word_to_deck(char * word, int direction, int x_pos, int y_pos);
 void set_word_to_deck(char * word, int direction, int x_pos, int y_pos, int word_index);
 void set_words();
+//char * check_word_by_pos(int position1[], int position2[]);
+int check_word_by_pos(int x1, int y1, int x2, int y2);
 
 #endif //ASSIGNMENT_WORDGENERATOR_H
