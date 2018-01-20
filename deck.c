@@ -52,8 +52,9 @@ int guess_loop() {
     int row2;
     int column2;
 
+    int guessed_words[HIDDEN_WORDS] = {0,0,0,0}; //array of guessed word ids
+
     bool is_solved = false; //dedicate if game is solved
-    bool is_guessed = false; //dedicate if some of hidden words was founded is solved
     bool incoret_format = false;
     while (is_solved == false){
 
@@ -109,6 +110,17 @@ int guess_loop() {
                         fprintf(stdout, "You made a mistake!\n");
                     }else{
                         fprintf(stdout, "You found %s!\n",word.word);
+                    }
+
+                    guessed_words[word.word_index-1] = word.word_index;
+                    for (int i = 0; i < HIDDEN_WORDS; ++i) {
+                        if (guessed_words[i] != 0){//user still found all words
+                            is_solved = true;
+                            exit_code = GAME_GUESSED;
+                        }else{
+                            is_solved = false;
+                            break;
+                        }
                     }
                 }
 

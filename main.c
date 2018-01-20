@@ -19,10 +19,12 @@ int generate_menu(){
 
     }else if(option == 2){ //exit loop, allow program to return 0 and finish
         return  EXIT;
+
+    }else{
+        fprintf(stdout, "Select 1 or 2, please.\n");
+        return generate_menu();
+
     }
-
-    //TODO osetrit co spravit ked user stlaci nieco ine
-
 }
 
 //proceed all necessary steps for initialization
@@ -35,10 +37,17 @@ void init_game(){
 int main(int argc, char** argv)
 {
     int menu_result = generate_menu();
-    if (menu_result == NEW_GAME){
-        init_game();    //generate new game
-        print_deck();   //print game
-        guess_loop();   //evaluating user output
+    while (menu_result == NEW_GAME) {
+        init_game();                //generate new game
+        print_deck();               //print game
+        int code = guess_loop();    //evaluating user output
+
+        if (code == GAME_GUESSED) {
+            fprintf(stdout, "You found all words! Would you like to play another game?\n");
+        } else {
+            fprintf(stdout, "You didn't find all words! Would you like to play another game?\n");
+        }
+        menu_result = generate_menu();
     }
 
     fprintf(stdout, "Finished\n");
