@@ -45,7 +45,7 @@ int main(int argc, char** argv)
     while (menu_result == NEW_GAME) {
         init_game();                //generate new game
         print_deck();               //print game
-        int code = guess_loop();    //evaluating user output
+        int code = guess_loop();    //evaluate user output
 
         if (code == GAME_GUESSED) {
             fprintf(stdout, "You found all words! Would you like to play another game?\n");
