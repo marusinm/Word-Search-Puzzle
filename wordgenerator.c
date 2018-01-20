@@ -39,7 +39,6 @@ void print_positions_grid(){
     }
 }
 
-//initialize all values to false - no words are in deck, no attempts are to put word to grid
 void init_positions_grid(){
     for (int i = 0; i < DECK_HEIGHT; ++i) {
         for (int j = 0; j < DECK_WIDTH; ++j) {
@@ -48,15 +47,12 @@ void init_positions_grid(){
     }
 }
 
-
-//generate next hidden word direction
 int gen_word_direction(){
     int directions[3] = {HORIZONTAL, VERTICAL, DIAGONAL};
     int position = (generate_rand_num(0, 2));
     return directions[position];
 }
 
-//generate and save to hidden words
 char * generate_hidden_word(){
     char * word;
     int position = generate_rand_num(0, WORD_DB_LENGTH-1);
@@ -79,7 +75,6 @@ char * generate_hidden_word(){
     return word;
 }
 
-//check if word fits to the grip from starting position and direction
 bool is_fitting(int word_length, int direction, int x_pos, int y_pos){
     bool fits = false;
 
@@ -103,7 +98,6 @@ bool is_fitting(int word_length, int direction, int x_pos, int y_pos){
     return fits;
 }
 
-//check if words don't intersect with other
 bool can_set(char * word, int direction, int x_pos, int y_pos){
     bool available = false;
 
@@ -158,7 +152,6 @@ bool can_set(char * word, int direction, int x_pos, int y_pos){
     return available;
 }
 
-//set hidden word to the table
 void set_word_to_deck(char * word, int direction, int x_pos, int y_pos, int word_index){
     int word_length = (int)strlen(word);
     if (direction == HORIZONTAL){
@@ -182,7 +175,6 @@ void set_word_to_deck(char * word, int direction, int x_pos, int y_pos, int word
     }
 }
 
-//put hidden words to the grid
 void set_words(){
     srand(time(NULL));
     for (int i = 0; i < HIDDEN_WORDS; ++i) {
@@ -227,8 +219,6 @@ void set_words(){
     }
 }
 
-
-//check if word exist on concrete position, return index of the word
 int check_word_by_pos(int x1, int y1, int x2, int y2){
     int word_idx1 = words_positions[x1][y1];
     int word_idx2 = words_positions[x2][y2];
@@ -249,7 +239,6 @@ int check_word_by_pos(int x1, int y1, int x2, int y2){
 
         char first_choosen_letter = deck[x1][y1];
         char last_choosen_letter = deck[x2][y2];
-
 
         //check if user selected right first and last letters, then assume that he found the word (could be exceptions)
         if (first_word_letter == first_choosen_letter && last_word_letter == last_choosen_letter){

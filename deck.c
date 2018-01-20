@@ -5,12 +5,10 @@
 #include "deck.h"
 #include "wordgenerator.h"
 
-//generate random number in minimum maximum range and covert it to char
 char generate_rand_num(int minimum, int maximum){
     return (char) (rand() % (maximum + 1 - minimum) + minimum);
 }
 
-//fill grid with random chars
 void fill_grid_randomly(){
     srand(time(NULL));
     for (int i = 0; i < DECK_HEIGHT; ++i) {
@@ -20,7 +18,6 @@ void fill_grid_randomly(){
     }
 }
 
-//print deck = grid + labelling + hidden words
 void print_deck(){
     //print labeling
     fprintf(stdout, "  ABCDEFGHIJ\n\n");
@@ -42,7 +39,6 @@ void print_deck(){
     fprintf(stdout, "\n");
 }
 
-//listening for user input and checking words or end of program
 int guess_loop() {
     int exit_code;
 

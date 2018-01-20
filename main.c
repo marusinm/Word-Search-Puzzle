@@ -6,7 +6,10 @@
 #define NEW_GAME 1
 #define EXIT 2
 
-//generates menu
+/**
+ * Generate menu
+ * @return user selection
+ */
 int generate_menu(){
     fprintf(stdout, "1.\tGenerate a new Word Puzzle\n");
     fprintf(stdout, "2.\tExit\n");
@@ -27,7 +30,9 @@ int generate_menu(){
     }
 }
 
-//proceed all necessary steps for initialization
+/**
+ * Proceed all necessary steps for new game initialization
+ */
 void init_game(){
     fill_grid_randomly();   //fill grid with randomly letters
     init_positions_grid();  //initialize bool grid which indicate filled words positions
