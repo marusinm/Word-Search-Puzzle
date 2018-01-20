@@ -43,7 +43,6 @@ void print_positions_grid(){
 void init_positions_grid(){
     for (int i = 0; i < DECK_HEIGHT; ++i) {
         for (int j = 0; j < DECK_WIDTH; ++j) {
-//            words_positions[i][j] = false;
             words_positions[i][j] = 0;
         }
     }
@@ -111,7 +110,6 @@ bool can_set(char * word, int direction, int x_pos, int y_pos){
     int word_length = (int)strlen(word);
     if (direction == HORIZONTAL){
         for (int i = 0; i < word_length; ++i) {
-//            if(words_positions[x_pos][y_pos+i] == false){ //word doesn't exist on this position
             if(words_positions[x_pos][y_pos+i] == 0){ //word doesn't exist on this position
                 available = true;
             }else{ //word exists on this position
@@ -127,7 +125,6 @@ bool can_set(char * word, int direction, int x_pos, int y_pos){
 
     }else if (direction == VERTICAL){
         for (int i = 0; i < word_length; ++i) {
-//            if(words_positions[x_pos+i][y_pos] == false){ //word doesn't exist on this position
             if(words_positions[x_pos+i][y_pos] == 0){ //word doesn't exist on this position
                 available = true;
             }else{ //word exists on this position
@@ -143,7 +140,6 @@ bool can_set(char * word, int direction, int x_pos, int y_pos){
 
     }else{
         for (int i = 0; i < word_length; ++i) {
-//            if(words_positions[x_pos+i][y_pos+i] == false){ //word doesn't exist on this position
             if(words_positions[x_pos+i][y_pos+i] == 0){ //word doesn't exist on this position
                 available = true;
             }else{ //word exists on this position
@@ -163,27 +159,23 @@ bool can_set(char * word, int direction, int x_pos, int y_pos){
 }
 
 //set hidden word to the table
-//void set_word_to_deck(char * word, int direction, int x_pos, int y_pos){
 void set_word_to_deck(char * word, int direction, int x_pos, int y_pos, int word_index){
     int word_length = (int)strlen(word);
     if (direction == HORIZONTAL){
         for (int i = 0; i < word_length; ++i) {
             deck[x_pos][y_pos+i] = word[i];
-//            words_positions[x_pos][y_pos+i] = true;
             words_positions[x_pos][y_pos+i] = word_index;
         }
 
     }else if (direction == VERTICAL){
         for (int i = 0; i < word_length; ++i) {
             deck[x_pos+i][y_pos] = word[i];
-//            words_positions[x_pos+i][y_pos] = true;
             words_positions[x_pos+i][y_pos] = word_index;
         }
 
     }else{
         for (int i = 0; i < word_length; ++i) {
             deck[x_pos+i][y_pos+i] = word[i];
-//            words_positions[x_pos+i][y_pos+i] = true;
             words_positions[x_pos+i][y_pos+i] = word_index;
         }
 
@@ -210,7 +202,6 @@ void set_words(){
 
             if (can_set(hidden_words[i].word, direction, x_pos, y_pos)){ // word isn't intersecting with other word, or intersect in same letter
                 //finally set word
-//                set_word_to_deck(hidden_words[i].word, direction, x_pos, y_pos);
                 set_word_to_deck(hidden_words[i].word, direction, x_pos, y_pos, i+1);
 
             }else{//repeat iteration - generate new word, direction and position

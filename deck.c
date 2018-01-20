@@ -55,7 +55,7 @@ int guess_loop() {
     int guessed_words[HIDDEN_WORDS] = {0,0,0,0}; //array of guessed word ids
 
     bool is_solved = false; //dedicate if game is solved
-    bool incoret_format = false;
+    bool incorect_format = false;
     while (is_solved == false){
 
         //user must guess position of first letter and then position of last letter
@@ -70,7 +70,7 @@ int guess_loop() {
 
         if (strlen(input) == 6){ //grater then "exit" string which is longest available string
             scanf("%*[^\n]");scanf("%*c");//clear stdin upto newline
-            incoret_format = true;
+            incorect_format = true;
 
         }else if(strlen(input) == 5 && strcmp(input, "exit\n") == 0){
             exit_code = GAME_EXITED;
@@ -126,16 +126,16 @@ int guess_loop() {
 
 
             }else{
-                incoret_format = true;
+                incorect_format = true;
             }
         } else {
-            incoret_format = true;
+            incorect_format = true;
         }
 
 
-        if (incoret_format) {
+        if (incorect_format) {
             fprintf(stdout, "Incorrect format!\n");
-            incoret_format = false;
+            incorect_format = false;
         }
 
         //user must guess position of first letter and then position of last letter
@@ -147,6 +147,5 @@ int guess_loop() {
     }
 
     return exit_code;
-
 }
 

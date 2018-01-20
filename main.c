@@ -17,10 +17,10 @@ int generate_menu(){
     if(option == 1){ //generate new puzzle
         return NEW_GAME;
 
-    }else if(option == 2){ //exit loop, allow program to return 0 and finish
+    }else if(option == 2){ //return exitcode for end of game
         return  EXIT;
 
-    }else{
+    }else{ // recursive calling in case of bad selection
         fprintf(stdout, "Select 1 or 2, please.\n");
         return generate_menu();
 
@@ -30,7 +30,7 @@ int generate_menu(){
 //proceed all necessary steps for initialization
 void init_game(){
     fill_grid_randomly();   //fill grid with randomly letters
-    init_positions_grid();      //initialize bool grid which indicate filled words positions
+    init_positions_grid();  //initialize bool grid which indicate filled words positions
     set_words();            //generate new hidden words and put it to the deck
 }
 
@@ -47,7 +47,7 @@ int main(int argc, char** argv)
         } else {
             fprintf(stdout, "You didn't find all words! Would you like to play another game?\n");
         }
-        menu_result = generate_menu();
+        menu_result = generate_menu(); // generate menu again and looping while user select option 2 for EXIT
     }
 
     fprintf(stdout, "Finished\n");
