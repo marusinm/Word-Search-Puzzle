@@ -248,6 +248,8 @@ int check_word_by_pos(int x1, int y1, int x2, int y2){
     }else{
         return 0;
     }
+
+    return 0;
 }
 
 
